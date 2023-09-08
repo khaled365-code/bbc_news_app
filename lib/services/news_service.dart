@@ -21,7 +21,7 @@ class Newsservice {
 
       for (var x in articles) {
         NewsModel newsmodel = NewsModel(
-            image: x['urlToImage'], text1: x['title'], text2: x['description']);
+            image: x['urlToImage'], text1: x['title'], text2: x['description'],url: x['url']);
         newslist.add(newsmodel);
       }
       return newslist;
