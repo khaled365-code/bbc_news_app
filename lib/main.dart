@@ -1,7 +1,4 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/services/news_service.dart';
-import 'package:news_app/views/home_page.dart';
 import 'package:news_app/views/splash_screen.dart';
 
 void main() {
@@ -18,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      home: Homescreen()
+      home: Splashscreen()
     );
   }
 }

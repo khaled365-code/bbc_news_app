@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:simple_progress_indicators/simple_progress_indicators.dart';
-
 import 'home_page.dart';
 
 
@@ -51,7 +49,7 @@ class _SplashscreenState extends State<Splashscreen> {
 
 
                         ),
-                        child: CircleAvatar(
+                        child: const CircleAvatar(
                           radius:150,
                           backgroundImage: AssetImage('assets/images/logo.png') ,
 
@@ -60,8 +58,8 @@ class _SplashscreenState extends State<Splashscreen> {
                     ),
                   Center(
                     child:Container(
-                        margin: EdgeInsetsDirectional.only(top: 65,start: 30,end: 30),
-                        child: LinearProgressIndicator(
+                        margin: const EdgeInsetsDirectional.only(top: 65,start: 30,end: 30),
+                        child: const LinearProgressIndicator(
                           color: Colors.black,
                           backgroundColor: Colors.grey,
                         )
@@ -76,9 +74,9 @@ class _SplashscreenState extends State<Splashscreen> {
 
   void timeDelay()
   {
-     Future.delayed(Duration(seconds: 30),(){
+     Future.delayed(const Duration(seconds: 30),(){
 
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Homescreen()));
     });
 
   }

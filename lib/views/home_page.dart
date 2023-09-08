@@ -27,8 +27,8 @@ class Homescreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 80),
+        title: const Padding(
+          padding:  EdgeInsets.symmetric(horizontal: 80),
           child: Row(
             children: [
               Text('News',style: TextStyle(color: Colors.black,fontSize: 20,fontWeight:FontWeight.bold),),
@@ -41,10 +41,10 @@ class Homescreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: CustomScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverToBoxAdapter(child: buildCardsList(),),
-            NewsListViewBuilder(
+            const NewsListViewBuilder(
               category: 'general',
               country: 'us',
             ),
@@ -60,12 +60,12 @@ class Homescreen extends StatelessWidget {
               height: 100,
               width: double.infinity,
               child :ListView.separated(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => Categorycard(
                     firstModel: fCategoryList[index],
                   ),
-                  separatorBuilder: (context, index) => SizedBox(width: 10,),
+                  separatorBuilder: (context, index) => const SizedBox(width: 10,),
                   itemCount: fCategoryList.length),
 
             );

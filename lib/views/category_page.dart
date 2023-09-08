@@ -23,10 +23,10 @@ class Categorypage extends StatelessWidget {
        child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: CustomScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             slivers: [
               NewsListViewBuilder(
-                category: '$category',
+                category: category,
                 country: 'us',
               ),
             ],

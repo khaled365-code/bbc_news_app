@@ -42,7 +42,7 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
             return const SliverToBoxAdapter(
               child: Padding(padding: const EdgeInsets.symmetric(horizontal: 15),child:Center(child:Text('Error occured while app is runing please try again later......',style:TextStyle(fontSize:40,fontWeight:FontWeight.bold,color:Colors.black),))));
           } else {
-            return  SliverToBoxAdapter(
+            return  const SliverToBoxAdapter(
                 child:  Padding(
                   padding: EdgeInsetsDirectional.symmetric(vertical:200,horizontal: 70),
                     child: Center(child: CircularProgressIndicator(color: Colors.blue,strokeWidth: 4,)))
