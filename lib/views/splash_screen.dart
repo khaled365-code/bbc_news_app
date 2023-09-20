@@ -16,7 +16,6 @@ class Splashscreen extends StatefulWidget {
 class _SplashscreenState extends State<Splashscreen> {
 
 
-  bool isFull=false;
 
 
 
@@ -29,55 +28,57 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[400],
+        backgroundColor: Colors.red[900],
         appBar: AppBar(
-        backgroundColor: Colors.grey[400],
         elevation: 0,
+          backgroundColor: Colors.transparent,
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Colors.grey[400]
+            statusBarColor: Colors.red[900],
           ),
 
       ),
-      body: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 100),
-                    child:  Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(150),
-                          border: Border.all(color: Colors.black,width: 2),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 290,horizontal: 60),
+        child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                 width: 30,
+                  height: 35,
+                  color: Colors.grey[200],
+                  child: Center(child: Text('B',style: TextStyle(color: Colors.red[700],fontSize: 30,fontWeight: FontWeight.bold),)),
+                ),
+                SizedBox(width: 10,),
+                Container(
+                  width: 30,
+                  height: 35,
+                  color: Colors.grey[200],
+                  child: Center(child: Text('B',style: TextStyle(color: Colors.red[700],fontSize: 30,fontWeight: FontWeight.bold),)),
+                ),
+                SizedBox(width: 10,),
+                Container(
+                  width: 30,
+                  height: 35,
+                  color: Colors.grey[200],
+                  child: Center(child: Text('C',style: TextStyle(color: Colors.red[700],fontSize: 30,fontWeight: FontWeight.bold),)),
+                ),
+                SizedBox(width: 10,),
+                Text('NEWS',style: TextStyle(fontSize: 30,color: Colors.white),)
 
-
-                        ),
-                        child: const CircleAvatar(
-                          radius:150,
-                          backgroundImage: AssetImage('assets/images/logo.png') ,
-
-                        ),
-                      ),
-                    ),
-                  Center(
-                    child:Container(
-                        margin: const EdgeInsetsDirectional.only(top: 65,start: 30,end: 30),
-                        child: const LinearProgressIndicator(
-                          color: Colors.black,
-                          backgroundColor: Colors.grey,
-                        )
-                      ),
-                  ),
               ],
-        ),
-
+            ),
+      ),
     );
 
   }
 
   void timeDelay()
   {
-     Future.delayed(const Duration(seconds: 30),(){
-
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Homescreen()));
+     Future.delayed(const Duration(seconds: 20),(){
+       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Homescreen()));
     });
 
   }
 }
+
+

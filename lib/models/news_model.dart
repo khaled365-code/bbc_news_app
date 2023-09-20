@@ -13,4 +13,9 @@ class NewsModel
 
   NewsModel({required this.image,required this.text1,required this.text2,required this.url});
 
+  factory NewsModel.fromJson(json)
+  {
+    return NewsModel(image: json['urlToImage'], text1: json['title'], text2: json['description'],url: json['url']);
+  }
+
 }

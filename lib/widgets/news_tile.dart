@@ -23,7 +23,7 @@ class NewsTile extends StatelessWidget {
           children: [
             const SizedBox(height: 30,),
             Image.network(newsmodel.image ??=
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png',
+            'https://media.gettyimages.com/photos/good-news-headlines-picture-id157523298',
               fit: BoxFit.cover,),
             const SizedBox(height: 5,),
             Text(newsmodel.text1 ?? '', maxLines: 2,
@@ -41,7 +41,8 @@ class NewsTile extends StatelessWidget {
     );
   }
 
-  Future<void> _launchUrl() async {
+  Future<void> _launchUrl() async
+  {
     final Uri _url = Uri.parse(newsmodel.url);
     if (!await launchUrl(_url)) {
       throw Exception('Could not launch $_url');
@@ -49,3 +50,5 @@ class NewsTile extends StatelessWidget {
   }
 
   }
+
+

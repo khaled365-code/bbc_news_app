@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/models/card_model.dart';
+import 'package:flutter/services.dart';
 import 'package:news_app/models/news_model.dart';
+import 'package:news_app/views/live_screen.dart';
+import 'package:news_app/views/search_screen.dart';
+import 'package:news_app/views/menu_screen.dart';
+import 'package:news_app/views/top_stories.dart';
 import 'package:news_app/widgets/news_list_view_builder.dart';
-import '../components/category_card.dart';
-
 
 
 
@@ -11,13 +13,7 @@ class Homescreen extends StatelessWidget {
 
   List<NewsModel> articles=[];
 
-  List<CategoryModel>fCategoryList=[
-    CategoryModel(image: 'assets/images/entertaiment.avif',text: 'Entertainment',color: Colors.white),
-    CategoryModel(text: 'Technology', image: 'assets/images/technology.jpeg',color: Colors.white),
-    CategoryModel(image: 'assets/images/entertaiment.avif',text: 'Science',color: Colors.white),
-    CategoryModel(image: 'assets/images/technology.jpeg',text: 'Sports',color: Colors.white ),
-    CategoryModel(image: 'assets/images/entertaiment.avif',text: 'General',color: Colors.white)
-  ];
+
 
 
   @override
@@ -25,49 +21,107 @@ class Homescreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: const Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 80),
-          child: Row(
+        backgroundColor: Colors.red[900],
+        systemOverlayStyle:SystemUiOverlayStyle(
+          statusBarColor: Colors.red[900]
+        ),
+        leading: InkWell(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Menuscreen(),));
+          },
+          child: Container(
+            width: double.infinity,
+            margin: EdgeInsetsDirectional.only(start: 15,top: 2),
+              child: Row(
+                children: [
+                  Text('Menu',style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
+                ],
+              )),
+        ),
+        centerTitle: true,
+        title: Text('Top Stories',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight:FontWeight.bold),),
+        actions: [
+          InkWell(
+            onTap: (){},
+            child: Container(
+              margin: EdgeInsetsDirectional.only(end: 15),
+              child: InkWell(
+                onTap: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Livescreen(),));
+                },
+                child: Row(
+                  children: [
+                    Icon(Icons.volume_down_alt,size: 30,),
+                    Text('LIVE',style: TextStyle(color: Colors.white,fontSize: 22,fontWeight:FontWeight.bold),)
+
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
+
+
+      ),
+
+        body:Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+          child: Column(
             children: [
-              Text('News',style: TextStyle(color: Colors.black,fontSize: 20,fontWeight:FontWeight.bold),),
-              Text('Cloud',style: TextStyle(color: Colors.orange,fontSize: 20,fontWeight:FontWeight.bold),),
-            ],
+              Expanded(
+              child: CustomScrollView(
+                physics: BouncingScrollPhysics(),
+                slivers: <Widget>[
+                  const NewsListViewBuilder(
+                    category: 'general',
+                    country: 'us',
+                  ),
+                ],
+              ),
+            ),
+              NavigationBar(
+                height: 70,
+                backgroundColor: Colors.white,
+              destinations: [
+                InkWell(
+                  onTap: ()
+                  {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Topstories(),));
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.my_library_books_outlined,size: 25,color: Colors.grey[600]),
+                      SizedBox(height: 5,),
+                      Text('Top Stories',style: TextStyle(fontSize: 15),),
+                    ],
+                  ),
+                ),
+                InkWell(
+                  onTap: ()
+                  {
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => Searchscreen() ,));
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+
+                    children: [
+                      Icon(Icons.search,size: 25,color: Colors.grey[600] ,),
+                      SizedBox(height: 5,),
+                      Text('Search',style: TextStyle(fontSize: 15)),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          ],
           ),
         ),
-      ),
-
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            SliverToBoxAdapter(child: buildCardsList(),),
-            const NewsListViewBuilder(
-              category: 'general',
-              country: 'us',
-            ),
-          ],
-        ),
-      ),
-     );
+      );
 
   }
 
-  Container buildCardsList() {
-    return Container(
-              height: 100,
-              width: double.infinity,
-              child :ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => Categorycard(
-                    firstModel: fCategoryList[index],
-                  ),
-                  separatorBuilder: (context, index) => const SizedBox(width: 10,),
-                  itemCount: fCategoryList.length),
 
-            );
-  }
 }
+

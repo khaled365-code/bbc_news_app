@@ -11,9 +11,10 @@ import '../widgets/news_list_view_builder.dart';
 class Categorypage extends StatelessWidget {
 
 
-  final String category;
+    String category;
+    String country;
 
-  Categorypage({required this.category});
+  Categorypage({required this.category, required this.country});
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +26,8 @@ class Categorypage extends StatelessWidget {
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
-              NewsListViewBuilder(
-                category: category,
-                country: 'us',
-              ),
+               NewsListViewBuilder(category: category, country: country,)
+
             ],
           ),
         ),
